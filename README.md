@@ -5,7 +5,7 @@ SOLUCIONES MÓVILES II
 
 Augusto Joaquin Rivera Muñoz
 
-URL del repositorio SM2_ExamenUnidad3 en GitHub.
+https://github.com/RiveraAugusto/SM2_ExamenUnidad3
 
 Capturas de pantalla:
 
