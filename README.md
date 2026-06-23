@@ -9,6 +9,18 @@ https://github.com/RiveraAugusto/SM2_ExamenUnidad3
 
 Capturas de pantalla:
 
+## Estructura de carpetas `.github/workflows/`
+
+![Estructura de carpetas](Capturas/Estructura%20de%20carpetas.png)
+
+## Contenido del archivo `quality-check.yml`
+
+![Contenido del archivo quality-check.yml](Capturas/Contenido%20del%20archivo%20quality-check.png)
+
+## Ejecución del workflow en la pestaña `Actions`
+
+![Ejecucion del workflow en la pestana Actions](Capturas/Ejecuci%C3%B3n%20del%20workflow%20en%20la%20pesta%C3%B1a%20Actions.png)
+
 
 Explicación de lo realizado:
 
