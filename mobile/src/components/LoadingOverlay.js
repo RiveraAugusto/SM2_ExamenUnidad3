@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { COLORS, FONTS, SPACING, RADIUS } from '../constants/theme';
 

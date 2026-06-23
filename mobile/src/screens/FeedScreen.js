@@ -30,7 +30,7 @@ const SkeletonCard = () => (
   </View>
 );
 
-const DoubtCard = memo(({ item, getTimeAgo, index, onPress, onLongPress, isOwn, userId, userCareer, onLike }) => {
+function DoubtCardBase({ item, getTimeAgo, index, onPress, onLongPress, isOwn, userId, userCareer, onLike }) {
   const isLiked = (item.liked_by || []).includes(userId);
   const isRecommended = !!userCareer && !!item.subject_name &&
     item.subject_name.toLowerCase().includes(userCareer.toLowerCase().split(' ').pop());
@@ -129,7 +129,9 @@ const DoubtCard = memo(({ item, getTimeAgo, index, onPress, onLongPress, isOwn, 
       </TouchableOpacity>
     </Animated.View>
   );
-});
+}
+
+const DoubtCard = memo(DoubtCardBase);
 
 export default function FeedScreen() {
   const { user, onUserActivity } = useAuth();

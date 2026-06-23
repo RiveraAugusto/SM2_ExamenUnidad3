@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, {
-  useSharedValue, useAnimatedStyle, withTiming, withDelay, withSequence,
+  useSharedValue, useAnimatedStyle, withTiming, withDelay,
   runOnJS,
 } from 'react-native-reanimated';
 import { COLORS, FONTS, SPACING, RADIUS, SHADOWS } from '../constants/theme';

@@ -48,6 +48,6 @@
     "eslint-plugin-react-native": "^4.1.0"
   },
   "jest": {
-    "preset": "react-native"
+    "testEnvironment": "node"
   }
 }

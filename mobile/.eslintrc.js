@@ -2,12 +2,12 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
     'react-native/react-native': true,
   },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react-native/all',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -18,7 +18,13 @@ module.exports = {
   },
   plugins: ['react', 'react-native'],
   rules: {
+    'no-empty': ['error', { allowEmptyCatch: true }],
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };

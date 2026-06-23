@@ -8,7 +8,7 @@ import ChatListScreen from '../screens/ChatListScreen';
 import PostScreen from '../screens/PostScreen';
 import LeaderboardScreen from '../screens/LeaderboardScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import { COLORS, FONTS, SPACING, RADIUS } from '../constants/theme';
+import { COLORS, RADIUS } from '../constants/theme';
 
 const Tab = createBottomTabNavigator();
 

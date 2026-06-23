@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView, Image,
-  Alert, RefreshControl,
+  RefreshControl,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, {
@@ -10,7 +10,6 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../context/AuthContext';
-import { API } from '../config/api';
 import { getChatRooms } from '../services/chatApi';
 import { COLORS, FONTS, SPACING, RADIUS, SHADOWS } from '../constants/theme';
 
@@ -195,7 +194,7 @@ export default function ProfileScreen() {
         <Animated.View entering={FadeInDown.delay(500).duration(500)}>
           <Text style={styles.sectionTitle}>Historial de Ayudas</Text>
           {history.length > 0 ? (
-            history.map((room, idx) => {
+            history.map((room) => {
               const isMentor = user?.id === room.mentor_id;
               const otherName = isMentor ? room.student_name : room.mentor_name;
               return (
