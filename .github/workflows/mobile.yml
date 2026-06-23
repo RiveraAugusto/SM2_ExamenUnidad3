@@ -43,7 +43,7 @@ jobs:
     name: Build APK & Publish Release
     runs-on: ubuntu-latest
     needs: validate
-    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && secrets.EXPO_TOKEN != ''
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     permissions:
       contents: write
 
@@ -65,21 +65,37 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check Expo token
+        id: expo_token
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [ -n "$EXPO_TOKEN" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "EXPO_TOKEN no configurado. Se omiten los pasos de build y release."
+          fi
+
       - name: Setup Java 17
+        if: steps.expo_token.outputs.available == 'true'
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
       - name: Install EAS CLI
+        if: steps.expo_token.outputs.available == 'true'
         run: npm install -g eas-cli
 
       - name: Authenticate with Expo
+        if: steps.expo_token.outputs.available == 'true'
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: eas whoami
 
       - name: Build Android APK
+        if: steps.expo_token.outputs.available == 'true'
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
@@ -91,6 +107,7 @@ jobs:
             --output ./build/app-release.apk
 
       - name: Generate release tag and notes
+        if: steps.expo_token.outputs.available == 'true'
         id: release_meta
         run: |
           DATE=$(date +'%Y-%m-%d')
@@ -100,6 +117,7 @@ jobs:
           mv ./build/app-release.apk ./build/RCE_UPT.apk
 
       - name: Publish GitHub Release with APK
+        if: steps.expo_token.outputs.available == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.release_meta.outputs.tag }}
